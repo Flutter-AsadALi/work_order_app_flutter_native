@@ -9,6 +9,7 @@ import '../utils/app_text_style.dart';
 import '../utils/images_path.dart';
 import '../utils/loading_indicator.dart';
 import '../utils/app_colors.dart';
+import '../utils/app_label.dart';
 
 class ListOrderView extends StatefulWidget {
   const ListOrderView({super.key});
@@ -130,7 +131,7 @@ class _ListOrderViewState extends State<ListOrderView> {
                                       Row(
                                         children: [
                                           Text(
-                                            "Project ID:",
+                                            "${AppLabel.projectID}:",
                                             style: AppTextStyle.boldGrey12,
                                           ),
                                           Expanded(
@@ -148,7 +149,7 @@ class _ListOrderViewState extends State<ListOrderView> {
                                             MainAxisAlignment.spaceAround,
                                         children: [
                                           Text(
-                                            "Work Order:",
+                                            "${AppLabel.workOrder}:",
                                             style: AppTextStyle.boldGrey12,
                                           ),
                                           Expanded(
@@ -166,7 +167,7 @@ class _ListOrderViewState extends State<ListOrderView> {
                                       Row(
                                         children: [
                                           Text(
-                                            "Area:",
+                                            "${AppLabel.area}:",
                                             style: AppTextStyle.boldGrey12,
                                           ),
                                           Expanded(
@@ -184,7 +185,7 @@ class _ListOrderViewState extends State<ListOrderView> {
                                       Row(
                                         children: [
                                           Text(
-                                            "Date:",
+                                            "${AppLabel.scheduledData}:",
                                             style: AppTextStyle.boldGrey12,
                                           ),
                                           Expanded(

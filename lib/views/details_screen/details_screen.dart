@@ -7,6 +7,7 @@ import '../../controllers/list_view_controller.dart';
 import '../../models/model.dart';
 import '../../utils/app_bar.dart';
 import '../../utils/app_colors.dart';
+import '../../utils/app_label.dart';
 import '../../utils/app_text_style.dart';
 import '../../utils/images_path.dart';
 import '../../utils/loading_indicator.dart';
@@ -97,7 +98,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 Row(
                                   children: [
                                     Text(
-                                      "Project ID:",
+                                      "${AppLabel.projectID}:",
                                       style: AppTextStyle.boldGrey12,
                                     ),
                                     Expanded(
@@ -115,7 +116,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     Text(
-                                      "Work Order:",
+                                      "${AppLabel.workOrder}:",
                                       style: AppTextStyle.boldGrey12,
                                     ),
                                     Expanded(
@@ -127,18 +128,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     )
                                   ],
                                 ),
+
                                 SizedBox(
                                   height: 2.h,
                                 ),
                                 Row(
                                   children: [
                                     Text(
-                                      "Area:",
+                                      "${AppLabel.recordId}:",
                                       style: AppTextStyle.boldGrey12,
                                     ),
                                     Expanded(
                                       child: Text(
-                                        widget.workOrder.area ?? "",
+                                        widget.workOrder.recordId.toString(),
                                         maxLines: 2,
                                         style: AppTextStyle.regularGrey12,
                                       ),
@@ -151,7 +153,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 Row(
                                   children: [
                                     Text(
-                                      "Date:",
+                                      "${AppLabel.scheduledData}:",
                                       style: AppTextStyle.boldGrey12,
                                     ),
                                     Expanded(
@@ -166,28 +168,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 SizedBox(
                                   height: 2.h,
                                 ),
+
                                 Row(
                                   children: [
                                     Text(
-                                      "Work Order:",
-                                      style: AppTextStyle.boldGrey12,
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        widget.workOrder.workOrder ?? "",
-                                        maxLines: 2,
-                                        style: AppTextStyle.regularGrey12,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 2.h,
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      "To Do Filter:",
+                                      "${AppLabel.toDoFilter}:",
                                       style: AppTextStyle.boldGrey12,
                                     ),
                                     Expanded(
@@ -205,7 +190,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 Row(
                                   children: [
                                     Text(
-                                      "Assigned:",
+                                      "${AppLabel.assigned}:",
                                       style: AppTextStyle.boldGrey12,
                                     ),
                                     Expanded(
@@ -223,7 +208,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 Row(
                                   children: [
                                     Text(
-                                      "Responsible Agent:",
+                                      "${AppLabel.responsibleAgent}:",
                                       style: AppTextStyle.boldGrey12,
                                     ),
                                     Expanded(
@@ -241,7 +226,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 Row(
                                   children: [
                                     Text(
-                                      "Location:",
+                                      "${AppLabel.location}:",
                                       style: AppTextStyle.boldGrey12,
                                     ),
                                     Expanded(
@@ -259,7 +244,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 Row(
                                   children: [
                                     Text(
-                                      "Activity:",
+                                      "${AppLabel.activity}:",
                                       style: AppTextStyle.boldGrey12,
                                     ),
                                     Expanded(
@@ -271,31 +256,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     )
                                   ],
                                 ),
+                                
                                 SizedBox(
                                   height: 2.h,
                                 ),
                                 Row(
                                   children: [
                                     Text(
-                                      "Scheduled Date:",
-                                      style: AppTextStyle.boldGrey12,
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        widget.workOrder.scheduledDate ?? "",
-                                        maxLines: 2,
-                                        style: AppTextStyle.regularGrey12,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 2.h,
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      "Picked Time:",
+                                      "${AppLabel.pickedTime}:",
                                       style: AppTextStyle.boldGrey12,
                                     ),
                                     Expanded(
@@ -313,7 +281,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 Row(
                                   children: [
                                     Text(
-                                      "Arrived Time:",
+                                      "${AppLabel.arrivedTime}:",
                                       style: AppTextStyle.boldGrey12,
                                     ),
                                     Expanded(
