@@ -23,7 +23,9 @@ This Flutter Android application efficiently retrieves and displays work order d
 
 - Flutter version greater than 3.10
 - Java SDK
+## Download APK
 
+You can download the APK file for the app here: [Download App APK](link_to_apk_file)
 ## Installation
 
 1. Clone the repository:
