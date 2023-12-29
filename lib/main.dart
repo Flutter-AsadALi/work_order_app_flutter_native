@@ -28,9 +28,8 @@ class _MyAppState extends State<MyApp> {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         initialBinding: createBindings(context),
-        title: 'My App',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.green,
         ),
         getPages: AppRoutes.appRoutes(),
       );

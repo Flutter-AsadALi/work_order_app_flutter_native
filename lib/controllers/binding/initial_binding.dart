@@ -6,7 +6,6 @@ import '../internet_checker_controller/internet_checker_controller.dart';
 
 BindingsBuilder createBindings(BuildContext context) {
   return BindingsBuilder(() {
-    //Get.put(NoInternetController(), permanent: true);
     /* -------------------------------------------------------------------------- */
     /*                                   NetworkClient                            */
     /* -------------------------------------------------------------------------- */
@@ -26,6 +25,5 @@ BindingsBuilder createBindings(BuildContext context) {
       InternetConnectionController(),
       permanent: true,
     );
-  ///////////////////////////////////////////////////////////////////
   });
 }

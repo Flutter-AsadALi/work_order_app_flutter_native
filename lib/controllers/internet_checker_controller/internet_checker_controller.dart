@@ -5,6 +5,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../../utils/show_messages.dart';
+import '../app_preferences_controller/preferenceUtils.dart';
 
 class InternetConnectionController extends GetxController {
   ConnectivityResult _connectionStatus = ConnectivityResult.none;
@@ -23,7 +24,7 @@ class InternetConnectionController extends GetxController {
 
   Future<void> initConnectivity() async {
     late ConnectivityResult result;
-    // Platform messages may fail, so we use a try/catch PlatformException.
+    await PreferenceUtils.getInstance();
     try {
       result = await _connectivity.checkConnectivity();
     } on PlatformException catch (e) {
@@ -39,7 +40,7 @@ class InternetConnectionController extends GetxController {
     if (_connectionStatus == ConnectivityResult.none) {
       showErrorMessage("No Internet Connection");
     } else {
-      // showSuccessMessage("Internet Connection");
+
     }
     update();
   }

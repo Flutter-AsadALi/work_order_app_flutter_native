@@ -8,6 +8,7 @@ import '../helper/get_list_helper.dart';
 import '../models/model.dart';
 import '../network_client/network_clients.dart';
 import '../utils/show_messages.dart';
+import 'app_preferences_controller/preferenceUtils.dart';
 
 class ListViewController extends GetxController {
   static const platform = MethodChannel('apiChannel');
@@ -48,6 +49,9 @@ class ListViewController extends GetxController {
       final jsonData = jsonDecode(jsonData1);
 
       workOrderModel = workOrderModelFromJson(jsonData);
+      PreferenceUtils.saveUser(json.encode(workOrderModel));
+
+
       if (kDebugMode) {
         print(jsonData.hashCode);
         print(jsonData.length);
@@ -55,6 +59,12 @@ class ListViewController extends GetxController {
       }
       isLoading.value = false;
     } on PlatformException catch (e) {
+      if(PreferenceUtils.getUser()!=""){
+        final jsonData1 = jsonEncode(PreferenceUtils.getUser());
+        final jsonData = jsonDecode(jsonData1);
+        workOrderModel = workOrderModelFromJson(jsonData);
+        isLoading.value = false;
+      }
       if (kDebugMode) {
         print("data==============1=");
         print(e.message);
@@ -99,10 +109,22 @@ class ListViewController extends GetxController {
       final jsonData = jsonDecode(jsonData1);
       // print
       workOrderModel = workOrderModelFromJson(jsonData);
+      PreferenceUtils.saveUser(json.encode(workOrderModel));
       isLoadingUpdate.value = false;
       isLoading.value = true;
       isLoading.value = false;
     } on PlatformException catch (e) {
+      if(PreferenceUtils.getUser()!=""){
+        final jsonData1 = jsonEncode(PreferenceUtils.getUser());
+        final jsonData = jsonDecode(jsonData1);
+        
+        workOrderModel = workOrderModelFromJson(jsonData);
+      
+        isLoadingUpdate.value = false;
+        isLoading.value = true;
+        isLoading.value = false;
+      }
+      isLoadingUpdate.value = false;
       if (kDebugMode) {
         print("data==============1=");
         print(e.message);
