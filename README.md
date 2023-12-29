@@ -1,4 +1,4 @@
-# Flutter Android Work Orders Details List App
+# Flutter Android Native Work Orders Details List App
 
 This Flutter Android application efficiently retrieves and displays work order details on mobile devices, providing a user-friendly interface for accessing work order information.
 
