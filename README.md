@@ -23,6 +23,7 @@ This Flutter Android application efficiently retrieves and displays work order d
 
 - Flutter version greater than 3.10
 - Java SDK
+- environment sdk: '>=3.0.3 <4.0.0'
 ## Download APK
 
 You can download the APK file for the app here: [Download App APK](https://github.com/Flutter-AsadALi/work_order_app_flutter_native/blob/main/assets/flutter-native-app.apk)
