@@ -17,7 +17,7 @@ This Flutter Android application efficiently retrieves and displays work order d
 ![Screenshot Work Order Details View](https://github.com/Flutter-AsadALi/work_order_app_flutter/blob/main/assets/images/details.jpeg)
 
 ## Video
-![Video Demo](https://github.com/Flutter-AsadALi/work_order_app_flutter/blob/main/assets/images/video.mp4)
+[![Video Demo](https://github.com/Flutter-AsadALi/work_order_app_flutter_native/blob/main/assets/list.jpeg)](https://github.com/Flutter-AsadALi/work_order_app_flutter/blob/main/assets/images/video.mp4)
 
 ## Requirements
 
@@ -25,7 +25,7 @@ This Flutter Android application efficiently retrieves and displays work order d
 - Java SDK
 ## Download APK
 
-You can download the APK file for the app here: [Download App APK](link_to_apk_file)
+You can download the APK file for the app here: [Download App APK](https://github.com/Flutter-AsadALi/work_order_app_flutter_native/blob/main/assets/flutter-native-app.apk)
 ## Installation
 
 1. Clone the repository:
