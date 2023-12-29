@@ -10,6 +10,14 @@ This Flutter Android application efficiently retrieves and displays work order d
     - Area
     - Scheduled Date
     - State
+## Screenshots
+
+![Screenshot Splash Screen](https://github.com/Flutter-AsadALi/work_order_app_flutter/blob/main/assets/images/splsh.jpeg)
+![Screenshot List of Work Order](https://github.com/Flutter-AsadALi/work_order_app_flutter/blob/main/assets/images/list.jpeg)
+![Screenshot Work Order Details View](https://github.com/Flutter-AsadALi/work_order_app_flutter/blob/main/assets/images/details.jpeg)
+
+## Video
+![Video Demo](https://github.com/Flutter-AsadALi/work_order_app_flutter/blob/main/assets/images/video.mp4)
 
 ## Requirements
 
