@@ -63,7 +63,7 @@ class WorkOrder {
   String? pickedTime;
   String? arrivedTime;
   String? coordinates;
-  ImageArray? imageArray;
+  // ImageArray? imageArray;
 
   WorkOrder({
     this.recordId,
@@ -80,7 +80,7 @@ class WorkOrder {
     this.pickedTime,
     this.arrivedTime,
     this.coordinates,
-    this.imageArray,
+    // this.imageArray,
   });
 
   factory WorkOrder.fromJson(Map<String, dynamic> json) => WorkOrder(
@@ -98,7 +98,7 @@ class WorkOrder {
     pickedTime: json["picked_time"],
     arrivedTime: json["arrived_time"],
     coordinates: json["coordinates"],
-    imageArray: json["image_array"] == null ? null : ImageArray.fromJson(json["image_array"]),
+    // imageArray: json["image_array"] == null ? null : ImageArray.fromJson(json["image_array"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -116,26 +116,26 @@ class WorkOrder {
     "picked_time": pickedTime,
     "arrived_time": arrivedTime,
     "coordinates": coordinates,
-    "image_array": imageArray?.toJson(),
+    // "image_array": imageArray?.toJson(),
   };
 }
 
-class ImageArray {
-  List<dynamic>? beforeImages;
-  List<dynamic>? afterImages;
-
-  ImageArray({
-    this.beforeImages,
-    this.afterImages,
-  });
-
-  factory ImageArray.fromJson(Map<String, dynamic> json) => ImageArray(
-    beforeImages: json["before_images"] == null ? [] : List<dynamic>.from(json["before_images"]!.map((x) => x)),
-    afterImages: json["after_images"] == null ? [] : List<dynamic>.from(json["after_images"]!.map((x) => x)),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "before_images": beforeImages == null ? [] : List<dynamic>.from(beforeImages!.map((x) => x)),
-    "after_images": afterImages == null ? [] : List<dynamic>.from(afterImages!.map((x) => x)),
-  };
-}
+// class ImageArray {
+//   List<dynamic>? beforeImages;
+//   List<dynamic>? afterImages;
+//
+//   ImageArray({
+//     this.beforeImages,
+//     this.afterImages,
+//   });
+//
+//   factory ImageArray.fromJson(Map<String, dynamic> json) => ImageArray(
+//     beforeImages: json["before_images"] == null ? [] : List<dynamic>.from(json["before_images"]!.map((x) => x)),
+//     afterImages: json["after_images"] == null ? [] : List<dynamic>.from(json["after_images"]!.map((x) => x)),
+//   );
+//
+//   Map<String, dynamic> toJson() => {
+//     "before_images": beforeImages == null ? [] : List<dynamic>.from(beforeImages!.map((x) => x)),
+//     "after_images": afterImages == null ? [] : List<dynamic>.from(afterImages!.map((x) => x)),
+//   };
+// }
