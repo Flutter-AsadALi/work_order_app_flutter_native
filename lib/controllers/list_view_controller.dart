@@ -4,27 +4,26 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../helper/databese_helper.dart';
 import '../helper/get_list_helper.dart';
 import '../models/model.dart';
 import '../network_client/network_clients.dart';
 import '../utils/show_messages.dart';
-import 'app_preferences_controller/preferenceUtils.dart';
-
 class ListViewController extends GetxController {
   static const platform = MethodChannel('apiChannel');
   RxBool isLoading = false.obs;
   RxBool isLoadingUpdate = false.obs;
   late ListViewHelper listViewHelper;
   late WorkOrderModel workOrderModel;
-
+  final dbHelper = DatabaseHelper();
 /* -------------------------------------------------------------------------- */
 /*                              onInit State                                  */
 /* -------------------------------------------------------------------------- */
   @override
   void onInit() {
     listViewHelper = ListViewHelper(Get.find<NetworkClient>());
+    createDB();
     getDataFromNative();
-    // getData();
     super.onInit();
   }
 
@@ -33,11 +32,12 @@ class ListViewController extends GetxController {
 /* -------------------------------------------------------------------------- */
   Future<void> getDataFromNative() async {
     // ignore: prefer_typing_uninitialized_variables
-    var apiData;
+
     if (kDebugMode) {
       print("data is ============");
     }
     try {
+      var apiData;
       isLoading.value = true;
       apiData = await platform.invokeMethod('getDataFromAPI');
       if (kDebugMode) {
@@ -47,11 +47,8 @@ class ListViewController extends GetxController {
       }
       final jsonData1 = jsonEncode(apiData);
       final jsonData = jsonDecode(jsonData1);
-
       workOrderModel = workOrderModelFromJson(jsonData);
-      PreferenceUtils.saveUser(json.encode(workOrderModel));
-
-
+      await dbHelper.insertWorkOrderModel(workOrderModel);
       if (kDebugMode) {
         print(jsonData.hashCode);
         print(jsonData.length);
@@ -59,10 +56,20 @@ class ListViewController extends GetxController {
       }
       isLoading.value = false;
     } on PlatformException catch (e) {
-      if(PreferenceUtils.getUser()!=""){
-        final jsonData1 = jsonEncode(PreferenceUtils.getUser());
-        final jsonData = jsonDecode(jsonData1);
-        workOrderModel = workOrderModelFromJson(jsonData);
+      var workOrders = await dbHelper.getWorkOrders();
+      if(workOrders.isNotEmpty){
+        print("workOrders has data");
+         workOrderModel = WorkOrderModel(
+          status: true, // Provide appropriate status
+          message: "", // Provide appropriate message
+          data: Data(workOrders: workOrders),
+        );
+
+        // final jsonData1 = jsonEncode(workOrders.toString());
+        // final jsonData = jsonDecode(jsonData1);
+
+        // workOrderModel =workOrderModel;
+        // workOrderModelFromJson(jsonData);
         isLoading.value = false;
       }
       if (kDebugMode) {
@@ -70,7 +77,6 @@ class ListViewController extends GetxController {
         print(e.message);
       }
       showErrorMessage(e.message ?? "Failed to get data");
-      // data = 'Failed to get data: ${e.message}';
     }
 
     // setState(() {
@@ -95,31 +101,31 @@ class ListViewController extends GetxController {
 /* -------------------------------------------------------------------------- */
   getUpdateData() async {
     // ignore: prefer_typing_uninitialized_variables
-    var apiData;
 
     try {
+      var apiData;
       isLoadingUpdate.value = true;
       apiData = await platform.invokeMethod('getDataFromAPI');
       if (kDebugMode) {
         print("data===============");
-        // ignore: prefer_interpolation_to_compose_strings
         print("ApiData=" + apiData);
       }
       final jsonData1 = jsonEncode(apiData);
       final jsonData = jsonDecode(jsonData1);
       // print
       workOrderModel = workOrderModelFromJson(jsonData);
-      PreferenceUtils.saveUser(json.encode(workOrderModel));
+      await dbHelper.insertWorkOrderModel(workOrderModel);
       isLoadingUpdate.value = false;
       isLoading.value = true;
       isLoading.value = false;
     } on PlatformException catch (e) {
-      if(PreferenceUtils.getUser()!=""){
-        final jsonData1 = jsonEncode(PreferenceUtils.getUser());
-        final jsonData = jsonDecode(jsonData1);
-        
-        workOrderModel = workOrderModelFromJson(jsonData);
-      
+      var workOrders = await dbHelper.getWorkOrders();
+      if(workOrders.isNotEmpty){
+        workOrderModel = WorkOrderModel(
+          status: true,
+          message: "",
+          data: Data(workOrders: workOrders),
+        );
         isLoadingUpdate.value = false;
         isLoading.value = true;
         isLoading.value = false;
@@ -132,5 +138,9 @@ class ListViewController extends GetxController {
       showErrorMessage(e.message ?? "Failed to get data");
       // data = 'Failed to get data: ${e.message}';
     }
+  }
+
+  void createDB() async{
+    final db = await dbHelper.initDatabase();
   }
 }
