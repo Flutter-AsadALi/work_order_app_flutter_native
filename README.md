@@ -55,7 +55,7 @@ You can download the APK file for the app here: [Download App APK](https://githu
 
 - **Error Handling:** A robust error handling system is integrated to proficiently manage various scenarios, including network disruptions, server-side issues, or data inconsistencies. Clear and user-friendly error messages are displayed, facilitating better comprehension and user experience.
   
-- **Offline Handling:** The app can function without an internet connection. However, to access the work order list, the app needs initial data retrieval, allowing it to store essential information locally. Once fetched, this data enables the app to operate offline, providing access without an internet connection.
+- **Offline Handling:** The app can function without an internet connection. However, to access the work order list, the app needs initial data retrieval, allowing it to store essential information in the sqflite database. Once fetched, this data enables the app to operate offline, providing access without an internet connection.
 
 
 ## App Design Decisions
